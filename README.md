@@ -73,6 +73,15 @@ Login user and get access token.
 }
 ```
 
+**Curl:**
+
+curl --location 'http://localhost:3000/login' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email": "u1@kitra.abc",
+    "password": "123123"
+}'
+
 #### POST /logout
 
 Logout user (requires authentication).
