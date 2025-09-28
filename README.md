@@ -73,14 +73,16 @@ Login user and get access token.
 }
 ```
 
-**Curl:**
+**Curl Request:**
 
+```json
 curl --location 'http://localhost:3000/login' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "email": "u1@kitra.abc",
     "password": "123123"
 }'
+```
 
 #### POST /logout
 
@@ -90,6 +92,17 @@ Logout user (requires authentication).
 
 ```
 Authorization: Bearer {access_token}
+```
+
+**Curl Request:**
+
+```json
+curl --location 'http://localhost:3000/refresh' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzAwMCwiZW1haWwiOiJ1MUBraXRyYS5hYmMiLCJuYW1lIjoiVTEiLCJpYXQiOjE3NTkwNTE0MzYsImV4cCI6MTc1OTA1MzIzNn0.GTDXlkb5mJh7qNPxwP8V_dwITm2CKeoDlHA6fcVWo4w' \
+--data '{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzAwMCwiZW1haWwiOiJ1MUBraXRyYS5hYmMiLCJuYW1lIjoiVTEiLCJpYXQiOjE3NTkwNTE0MzYsImV4cCI6MTc1OTY1NjIzNn0.2yOIiRaJRrfYm3FZBvoMGsGzwZFZjmm7N93DhpJiJ9Q"
+}'
 ```
 
 #### POST /refresh
@@ -102,6 +115,13 @@ Refresh access token.
 {
   "refresh_token": "jwt_refresh_token"
 }
+```
+
+**Curl Request:**
+
+```json
+curl --location --request POST 'http://localhost:3000/logout' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzAwMCwiZW1haWwiOiJ1MUBraXRyYS5hYmMiLCJuYW1lIjoiVTEiLCJpYXQiOjE3NTkwNTA1MjIsImV4cCI6MTc1OTA1MjMyMn0._OeME1z_a6wQzTH-G2wTDfz5VRYrEn6dPrS0M5cKyvQ'
 ```
 
 ### Treasures
@@ -139,4 +159,11 @@ Authorization: Bearer {access_token}
   ],
   "count": 1
 }
+```
+
+**Curl Request:**
+
+```json
+curl --location 'http://localhost:3000/treasures?latitude=14.552036595352455&longitude=121.01696118771324&distance=10&minValue=20&maxValue=30' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzAwMCwiZW1haWwiOiJ1MUBraXRyYS5hYmMiLCJuYW1lIjoiVTEiLCJpYXQiOjE3NTkwNTE0MzYsImV4cCI6MTc1OTA1MzIzNn0.GTDXlkb5mJh7qNPxwP8V_dwITm2CKeoDlHA6fcVWo4w'
 ```
